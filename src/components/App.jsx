@@ -4,16 +4,8 @@ import Contacts from './Contacts';
 import Filter from './Filter';
 import Notification from './Notification';
 
-import { signup } from 'shared/services/auth/API';
-
 export const App = () => {
-  const data = {
-    name: 'aaa',
-    email: 'test@gmail.com',
-    password: 'test',
-  };
-
-  signup(data).then(a => console.log(a));
+  // const user = { password: '666qwe666', email: 'pasha666@gmail.com' };
 
   return (
     <>
