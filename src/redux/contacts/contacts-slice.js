@@ -5,7 +5,7 @@ import {
   removeContact,
 } from 'redux/contacts/contacts-operations';
 
-const originalState = {
+const initialState = {
   items: [],
   isLoading: false,
   error: null,
@@ -13,7 +13,7 @@ const originalState = {
 
 const mySlice = createSlice({
   name: 'contacts',
-  initialState: originalState,
+  initialState,
   extraReducers: {
     [fetchContacts.pending]: (store, _) => ({
       ...store,

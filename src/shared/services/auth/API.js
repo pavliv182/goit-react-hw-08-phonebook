@@ -1,11 +1,5 @@
 import axios from 'axios';
-//eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M…2Njl9.wC1DEO02PtijF5XCKhYPLsbBXV3CrwsZ8Uv_E4a6dik
 
-//eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MzZhMTU1ZDIyYmFhNTAwMTZiMTNmYWUiLCJpYXQiOjE2Njc4OTY4OTJ9.rO5TM9HYOpUZMB-mhyhvNJkC3xIejHFoeUS01EEjvJY
-
-//eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M…wNzB9.A5SxdWVqt99-Lvs2hLtrvC--iu4DPMsXSXcSsT51UDM
-
-//eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M…zNjB9.9S9PgC6u6_tUIuLeeCOOlJxNvhs6jIzH7eIY--_DK-s
 const instance = axios.create({
   baseURL: 'https://connections-api.herokuapp.com',
 });
