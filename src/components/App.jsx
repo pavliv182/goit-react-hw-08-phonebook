@@ -6,6 +6,7 @@ import Notification from './Notification';
 import MyRoutes from 'MyRoutes';
 import NavBar from './NavBar';
 import { useSelector } from 'react-redux';
+import { Outlet } from 'react-router-dom';
 
 export const App = () => {
   const isLogin = useSelector(store => store.auth.isLogin);
@@ -15,21 +16,14 @@ export const App = () => {
   return (
     <>
       <NavBar />
-
-      {isLogin ? (
+      {isLogin && (
         <>
-          <Section title="Phonebook">
+          {/* <Section title="Phonebook">
             <Phonebook />
-          </Section>
-          <Section title="Contacts">
-            <Filter />
-            <Notification message="Add new contact" />
-            <Contacts />
-          </Section>
+          </Section> */}
         </>
-      ) : (
-        <MyRoutes />
       )}
+      <MyRoutes />
     </>
   );
 };

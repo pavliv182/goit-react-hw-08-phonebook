@@ -1,21 +1,22 @@
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 function LoginForm({ userLogin }) {
   const [data, setData] = useState({
     email: '',
     password: '',
   });
-
+  const navigate = useNavigate();
   const handleChange = ({ target }) => {
     setData({ ...data, [target.name]: target.value });
   };
 
   const handleSubmit = e => {
     e.preventDefault();
-    const user = { password: '666qwe666', email: 'pasha666@gmail.com' };
-    userLogin(user);
+    userLogin(data);
+    navigate('/contacts');
   };
-
+  // const data = { password: '666qwe666', email: 'pasha666@gmail.com' };
   const { email, password } = data;
 
   return (

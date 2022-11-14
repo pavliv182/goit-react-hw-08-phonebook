@@ -14,13 +14,13 @@ const Contacts = () => {
     dispatch(fetchContacts());
   }, [dispatch]);
 
-  const { items } = useSelector(store => store.contacts);
-  const filter = useSelector(store => store.filter);
-
   const deleteContact = id => {
     dispatch(removeContact(id));
     Notify.info('Contact deleted from your phonebook');
   };
+
+  const filter = useSelector(store => store.filter);
+  const { items } = useSelector(store => store.contacts);
 
   const filterContacts = () => {
     if (filter) {

@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-function RegisterForm() {
+function RegisterForm({ userSignup }) {
   const [data, setData] = useState({
     name: '',
     email: '',
@@ -11,10 +11,15 @@ function RegisterForm() {
     setData({ ...data, [target.name]: target.value });
   };
 
+  const handleSubmit = e => {
+    e.preventDefault();
+    userSignup(data);
+  };
+
   const { name, email, password } = data;
 
   return (
-    <form action="">
+    <form onSubmit={handleSubmit}>
       <label htmlFor="name">Name</label>
       <input
         id="name"

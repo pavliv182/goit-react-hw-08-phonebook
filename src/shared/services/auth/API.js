@@ -15,14 +15,12 @@ const removeToken = () => {
 export const signup = async user => {
   const { data } = await instance.post('/users/signup', user);
   addToken(data.token);
-
   return data;
 };
 
 export const login = async user => {
   const { data } = await instance.post('/users/login', user);
   addToken(data.token);
-
   return data;
 };
 

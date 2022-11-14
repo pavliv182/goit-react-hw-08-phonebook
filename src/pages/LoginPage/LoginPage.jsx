@@ -5,6 +5,7 @@ import { login } from 'redux/auth/auth-operations';
 
 function LoginPage() {
   const dispatch = useDispatch();
+
   const userLogin = data => {
     dispatch(login(data));
   };
