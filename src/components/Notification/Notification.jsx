@@ -1,9 +1,6 @@
 import PropTypes from 'prop-types';
-import { useSelector } from 'react-redux';
 
-const Notification = ({ message }) => {
-  const { items, isLoading, error } = useSelector(store => store.contacts);
-
+const Notification = ({ message, items, isLoading, error }) => {
   return (
     <>
       {isLoading && <p>...Loading</p>}

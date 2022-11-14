@@ -6,24 +6,21 @@ import { logout } from 'redux/auth/auth-operations';
 // const getActiveLink = ({ isActive }) => {
 //   return isActive ? ${s.link} ${s.active} : ${s.link};
 // };
+import { getUserName } from 'redux/auth/auth-selectors';
 
-import { Outlet } from 'react-router-dom';
+import useUserLogin from 'shared/services/hooks/useUserLogin';
 
 function NavBar() {
-  const isLogin = useSelector(store => store.auth.isLogin);
-  const userName = useSelector(store => store.auth.user.name);
+  const userName = useSelector(getUserName);
 
   const dispatch = useDispatch();
+  const isLogin = useUserLogin();
 
   const userLogout = useCallback(() => {
     dispatch(logout());
     Notify.info('Logout is done');
   }, [dispatch]);
 
-  //   const notification = () => Notify.success('Login is successful');
-  // {
-  //   notification();
-  // }
   return (
     <>
       {!isLogin ? (
@@ -39,7 +36,6 @@ function NavBar() {
           </button>
         </div>
       )}
-      <Outlet />
     </>
   );
 }

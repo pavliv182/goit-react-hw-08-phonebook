@@ -1,19 +1,6 @@
-import { useSelector, useDispatch } from 'react-redux';
-
-import { addFilterContacts } from 'redux/filter/filter-slice';
-
 import css from './filter.module.css';
 
-function Filter() {
-  const filter = useSelector(store => store.filter);
-  const { items } = useSelector(store => store.contacts);
-
-  const dispatch = useDispatch();
-
-  const addFilter = e => {
-    dispatch(addFilterContacts(e.target.value));
-  };
-
+function Filter({ items, filter, addFilter }) {
   return (
     <>
       {Boolean(items.length) && (

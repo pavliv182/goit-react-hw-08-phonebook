@@ -3,7 +3,7 @@ import css from './HomePage.module.css';
 
 function HomePage() {
   return (
-    <Section>
+    <Section title="">
       <h1 className={css.pageHeader}>WELCOME</h1>
     </Section>
   );

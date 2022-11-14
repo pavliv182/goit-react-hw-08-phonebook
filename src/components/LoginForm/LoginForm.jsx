@@ -1,12 +1,14 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-function LoginForm({ userLogin }) {
+function LoginForm({ userLogin, loginSuccess }) {
   const [data, setData] = useState({
     email: '',
     password: '',
   });
+
   const navigate = useNavigate();
+  
   const handleChange = ({ target }) => {
     setData({ ...data, [target.name]: target.value });
   };
@@ -14,9 +16,10 @@ function LoginForm({ userLogin }) {
   const handleSubmit = e => {
     e.preventDefault();
     userLogin(data);
-    navigate('/contacts');
+    loginSuccess();
+    navigate('/');
   };
-  // const data = { password: '666qwe666', email: 'pasha666@gmail.com' };
+
   const { email, password } = data;
 
   return (

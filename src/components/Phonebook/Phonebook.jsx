@@ -1,14 +1,12 @@
 import { useState } from 'react';
 import { nanoid } from 'nanoid';
-import { useSelector } from 'react-redux';
 import { Notify } from 'notiflix';
 
 import './phonebook.module.css';
 
-const Phonebook = ({ add }) => {
+const Phonebook = ({ add, items }) => {
   const [formData, setFormData] = useState({ name: '', number: '' });
 
-  const { items } = useSelector(store => store.contacts);
   const { name, number } = formData;
 
   const handleChange = e => {
