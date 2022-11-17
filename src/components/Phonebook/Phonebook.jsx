@@ -1,10 +1,11 @@
 import { useState } from 'react';
 import { nanoid } from 'nanoid';
 import { Notify } from 'notiflix';
+import PropTypes from 'prop-types';
 
 import './phonebook.module.css';
 
-const Phonebook = ({ add, items }) => {
+const Phonebook = ({ add, items = [] }) => {
   const [formData, setFormData] = useState({ name: '', number: '' });
 
   const { name, number } = formData;
@@ -77,3 +78,8 @@ const Phonebook = ({ add, items }) => {
 };
 
 export default Phonebook;
+
+Phonebook.propTypes = {
+  add: PropTypes.func.isRequired,
+  items: PropTypes.array,
+};

@@ -14,4 +14,7 @@ export default Notification;
 
 Notification.propTypes = {
   message: PropTypes.string.isRequired,
+  items: PropTypes.array.isRequired,
+  isLoading: PropTypes.bool.isRequired,
+  error: PropTypes.string,
 };

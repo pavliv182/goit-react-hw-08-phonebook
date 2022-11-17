@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
 function LoginForm({ userLogin, loginSuccess }) {
   const [data, setData] = useState({
@@ -8,7 +9,7 @@ function LoginForm({ userLogin, loginSuccess }) {
   });
 
   const navigate = useNavigate();
-  
+
   const handleChange = ({ target }) => {
     setData({ ...data, [target.name]: target.value });
   };
@@ -48,3 +49,8 @@ function LoginForm({ userLogin, loginSuccess }) {
 }
 
 export default LoginForm;
+
+LoginForm.propTypes = {
+  userLogin: PropTypes.func.isRequired,
+  loginSuccess: PropTypes.func.isRequired,
+};

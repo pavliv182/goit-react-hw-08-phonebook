@@ -1,6 +1,7 @@
 import css from './contacts.module.css';
+import PropTypes from 'prop-types';
 
-const ContactsList = ({ data, deleteContact }) => {
+const ContactsList = ({ data = [], deleteContact }) => {
   const elements = data.map(el => (
     <li className={css.item} key={el.id}>
       <span>
@@ -16,3 +17,15 @@ const ContactsList = ({ data, deleteContact }) => {
 };
 
 export default ContactsList;
+
+ContactsList.propTypes = {
+  data: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.string.isRequired,
+      name: PropTypes.string.isRequired,
+      number: PropTypes.string.isRequired,
+      phone: PropTypes.string.isRequired,
+    })
+  ),
+  deleteContact: PropTypes.func.isRequired,
+};

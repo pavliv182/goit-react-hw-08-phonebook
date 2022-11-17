@@ -1,6 +1,7 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import { Notify } from 'notiflix';
+// import PropTypes from 'prop-types';
 
 import Phonebook from 'components/Phonebook';
 import Section from 'components/Section';
@@ -48,6 +49,7 @@ function ContactsPage() {
 
     return items;
   };
+  // console.log(items);
 
   const addFilter = e => {
     dispatch(addFilterContacts(e.target.value));

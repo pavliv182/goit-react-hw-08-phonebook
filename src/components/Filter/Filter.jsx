@@ -1,4 +1,5 @@
 import css from './filter.module.css';
+import PropTypes from 'prop-types';
 
 function Filter({ items, filter, addFilter }) {
   return (
@@ -22,3 +23,9 @@ function Filter({ items, filter, addFilter }) {
 }
 
 export default Filter;
+
+Filter.propTypes = {
+  items: PropTypes.array.isRequired,
+  filter: PropTypes.string.isRequired,
+  addFilter: PropTypes.func.isRequired,
+};

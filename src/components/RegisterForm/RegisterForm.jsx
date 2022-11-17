@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import PropTypes from 'prop-types';
 
 function RegisterForm({ userSignup }) {
   const [data, setData] = useState({
@@ -53,3 +54,7 @@ function RegisterForm({ userSignup }) {
 }
 
 export default RegisterForm;
+
+RegisterForm.propTypes = {
+  userSignup: PropTypes.func.isRequired,
+};
