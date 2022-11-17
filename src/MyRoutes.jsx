@@ -1,4 +1,6 @@
 import { Routes, Route } from 'react-router-dom';
+import PrivateRoute from 'shared/components/PrivateRoute';
+import PublicRoute from 'shared/components/PublicRoute';
 
 import LoginPage from 'pages/LoginPage';
 import RegisterPage from 'pages/RegisterPage';
@@ -6,21 +8,18 @@ import HomePage from 'pages/HomePage';
 import ContactsPage from 'pages/ContactsPage';
 import NotFoundPage from 'pages/NotFoundPage';
 
-import useUserLogin from 'shared/services/hooks/useUserLogin';
-
 function MyRoutes() {
-  const isLogin = useUserLogin();
-
   return (
     <Routes>
-      {isLogin ? (
-        <Route path="/" element={<ContactsPage />} />
-      ) : (
-        <Route path="/" element={<HomePage />} />
-      )}
+      <Route index element={<HomePage />} />
+      <Route element={<PublicRoute />}>
+        <Route path="/login" element={<LoginPage />} />
+        <Route path="/register" element={<RegisterPage />} />
+      </Route>
+      <Route element={<PrivateRoute />}>
+        <Route path="/contacts" element={<ContactsPage />} />
+      </Route>
 
-      <Route path="/login" element={<LoginPage />} />
-      <Route path="/register" element={<RegisterPage />} />
       <Route path="*" element={<NotFoundPage />} />
     </Routes>
   );

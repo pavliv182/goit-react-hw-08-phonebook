@@ -8,7 +8,7 @@ import { logout } from 'redux/auth/auth-operations';
 // };
 import { getUserName } from 'redux/auth/auth-selectors';
 
-import useUserLogin from 'shared/services/hooks/useUserLogin';
+import useUserLogin from 'shared/hooks/useUserLogin';
 
 function NavBar() {
   const userName = useSelector(getUserName);
@@ -25,6 +25,7 @@ function NavBar() {
     <>
       {!isLogin ? (
         <div style={{ height: 50, backgroundColor: '#eee' }}>
+          <NavLink to="/">Home</NavLink>
           <NavLink to="/login">Login</NavLink>
           <NavLink to="/register">Register</NavLink>
         </div>

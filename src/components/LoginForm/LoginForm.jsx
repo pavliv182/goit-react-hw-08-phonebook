@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 function LoginForm({ userLogin, loginSuccess }) {
@@ -7,8 +6,6 @@ function LoginForm({ userLogin, loginSuccess }) {
     email: '',
     password: '',
   });
-
-  const navigate = useNavigate();
 
   const handleChange = ({ target }) => {
     setData({ ...data, [target.name]: target.value });
@@ -18,7 +15,6 @@ function LoginForm({ userLogin, loginSuccess }) {
     e.preventDefault();
     userLogin(data);
     loginSuccess();
-    navigate('/');
   };
 
   const { email, password } = data;
