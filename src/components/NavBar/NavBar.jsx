@@ -12,7 +12,7 @@ import useUserLogin from 'shared/hooks/useUserLogin';
 
 function NavBar() {
   const isLogin = useUserLogin();
-  console.log(isLogin);
+  // console.log(isLogin);
   const userName = useSelector(getUserName);
 
   const dispatch = useDispatch();
