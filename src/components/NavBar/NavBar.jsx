@@ -3,9 +3,6 @@ import { useSelector, useDispatch } from 'react-redux';
 import { Notify } from 'notiflix';
 import { useCallback } from 'react';
 import { logout } from 'redux/auth/auth-operations';
-// const getActiveLink = ({ isActive }) => {
-//   return isActive ? ${s.link} ${s.active} : ${s.link};
-// };
 import { getUserName } from 'redux/auth/auth-selectors';
 
 import useUserLogin from 'shared/hooks/useUserLogin';
