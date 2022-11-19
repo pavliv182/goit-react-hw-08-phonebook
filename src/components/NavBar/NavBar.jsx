@@ -11,10 +11,11 @@ import { getUserName } from 'redux/auth/auth-selectors';
 import useUserLogin from 'shared/hooks/useUserLogin';
 
 function NavBar() {
+  const isLogin = useUserLogin();
+  console.log(isLogin);
   const userName = useSelector(getUserName);
 
   const dispatch = useDispatch();
-  const isLogin = useUserLogin();
 
   const userLogout = useCallback(() => {
     dispatch(logout());
