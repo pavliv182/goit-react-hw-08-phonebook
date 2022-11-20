@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const instance = axios.create({
+export const instance = axios.create({
   baseURL: 'https://connections-api.herokuapp.com',
 });
 
@@ -38,4 +38,21 @@ export const getCurrent = async token => {
     removeToken();
     throw error;
   }
+};
+
+// CONTACTS
+
+export const fetch = async () => {
+  const { data } = await instance.get('/contacts');
+  return data;
+};
+
+export const addNewContact = async contact => {
+  const { data } = await instance.post('/contacts', contact);
+  return data;
+};
+
+export const removeNewContact = async id => {
+  const { data } = await instance.delete(`/contacts/${id}`);
+  return data;
 };

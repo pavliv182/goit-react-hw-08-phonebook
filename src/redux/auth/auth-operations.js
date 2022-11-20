@@ -42,9 +42,11 @@ export const getCurrentUser = createAsyncThunk(
     try {
       const { auth } = getState();
       const { token } = auth;
-      // if (!Boolean(token.length)) {
-      //   return;
-      // }
+      if (!Boolean(token.length)) {
+        // или throw Error;
+        return rejectWithValue('no Token');
+      }
+
       const user = await API.getCurrent(token);
 
       return user;

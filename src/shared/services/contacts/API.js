@@ -1,22 +1,26 @@
-// https://635a38f0ff3d7bddb9b1f718.mockapi.io/api/v1/:endpoint
-// https://connections-api.herokuapp.com/users/signup
-import axios from 'axios';
+import { instance } from 'shared/services/auth/API';
 
-const instance = axios.create({
-  baseURL: 'https://635a436938725a1746c18731.mockapi.io/api/v1/contacts',
-});
+const setToken = () => {
+  const allLocalStorage = JSON.parse(localStorage.getItem('persist:root'));
+  const token = JSON.parse(allLocalStorage.auth).token;
+
+  instance.defaults.headers.common.Authorization = `Bearer ${token}`;
+};
 
 export const fetch = async () => {
-  const { data } = await instance.get('/');
+  setToken();
+  const { data } = await instance.get('/contacts');
   return data;
 };
 
 export const addNewContact = async contact => {
-  const { data } = await instance.post('/', contact);
+  setToken();
+  const { data } = await instance.post('/contacts', contact);
   return data;
 };
 
 export const removeNewContact = async id => {
-  const { data } = await instance.delete(`/${id}`);
+  setToken();
+  const { data } = await instance.delete(`/contacts/${id}`);
   return data;
 };
