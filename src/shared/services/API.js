@@ -12,6 +12,13 @@ const removeToken = () => {
   instance.defaults.headers.common.Authorization = '';
 };
 
+const setToken = () => {
+  const allLocalStorage = JSON.parse(localStorage.getItem('persist:root'));
+  const token = JSON.parse(allLocalStorage.auth).token;
+
+  instance.defaults.headers.common.Authorization = `Bearer ${token}`;
+};
+
 export const signup = async user => {
   const { data } = await instance.post('/users/signup', user);
   addToken(data.token);
@@ -43,6 +50,7 @@ export const getCurrent = async token => {
 // CONTACTS
 
 export const fetch = async () => {
+  setToken();
   const { data } = await instance.get('/contacts');
   return data;
 };
