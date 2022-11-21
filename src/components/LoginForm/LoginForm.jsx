@@ -1,5 +1,8 @@
 import { useState } from 'react';
 import PropTypes from 'prop-types';
+import { Notify } from 'notiflix';
+
+import useUserLogin from 'shared/hooks/useUserLogin';
 
 function LoginForm({ userLogin, loginSuccess }) {
   const [data, setData] = useState({
@@ -7,17 +10,25 @@ function LoginForm({ userLogin, loginSuccess }) {
     password: '',
   });
 
+  const isLogin = useUserLogin();
+
   const handleChange = ({ target }) => {
     setData({ ...data, [target.name]: target.value });
   };
 
+  const { email, password } = data;
+
   const handleSubmit = e => {
     e.preventDefault();
+    if (!email.length || !password.length) {
+      Notify.failure('Missing email or password');
+      return;
+    }
     userLogin(data);
-    loginSuccess();
+    if (isLogin) {
+      loginSuccess();
+    }
   };
-
-  const { email, password } = data;
 
   return (
     <form onSubmit={handleSubmit}>

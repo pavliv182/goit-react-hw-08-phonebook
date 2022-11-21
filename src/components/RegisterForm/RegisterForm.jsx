@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import PropTypes from 'prop-types';
+import { Notify } from 'notiflix';
 
 function RegisterForm({ userSignup }) {
   const [data, setData] = useState({
@@ -14,6 +15,10 @@ function RegisterForm({ userSignup }) {
 
   const handleSubmit = e => {
     e.preventDefault();
+    if (!email.length || !password.length || !name.length) {
+      Notify.failure('Missing name, email or password');
+      return;
+    }
     userSignup(data);
   };
 
