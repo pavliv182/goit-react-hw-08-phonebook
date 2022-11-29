@@ -12,12 +12,12 @@ const removeToken = () => {
   instance.defaults.headers.common.Authorization = '';
 };
 
-const setToken = () => {
-  const allLocalStorage = JSON.parse(localStorage.getItem('persist:root'));
-  const token = JSON.parse(allLocalStorage.auth).token;
+// const setToken = () => {
+//   const allLocalStorage = JSON.parse(localStorage.getItem('persist:root'));
+//   const token = JSON.parse(allLocalStorage.auth).token;
 
-  instance.defaults.headers.common.Authorization = `Bearer ${token}`;
-};
+//   instance.defaults.headers.common.Authorization = `Bearer ${token}`;
+// };
 
 export const signup = async user => {
   const { data } = await instance.post('/users/signup', user);
@@ -37,7 +37,7 @@ export const logout = async () => {
 };
 
 export const getCurrent = async token => {
-  addToken(token);
+  // addToken(token);
   try {
     const { data } = await instance.get('users/current');
     return data;
@@ -50,7 +50,7 @@ export const getCurrent = async token => {
 // CONTACTS
 
 export const fetch = async () => {
-  setToken();
+  // setToken();
   const { data } = await instance.get('/contacts');
   return data;
 };

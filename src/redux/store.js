@@ -20,19 +20,28 @@ import filterReducer from './filter/filter-slice';
 const persistConfig = {
   key: 'root',
   storage,
-  whiteList: ['token'],
+  whiteList: ['auth'],
+  // в whiteList было значение 'token'
 };
 
-const RootReducer = combineReducers({
-  contacts: contactsReducer,
-  filter: filterReducer,
-  auth: authReducer,
-});
+// const RootReducer = combineReducers({
+//   contacts: contactsReducer,
+//   filter: filterReducer,
+//   auth: authReducer,
+// });
 
-const persistedReducer = persistReducer(persistConfig, RootReducer);
+// const RootReducer = combineReducers({
+//   authReducer,
+// });
+
+const persistedReducer = persistReducer(persistConfig, authReducer);
 
 export const store = configureStore({
-  reducer: persistedReducer,
+  reducer: {
+    contacts: contactsReducer,
+    filter: filterReducer,
+    auth: persistedReducer,
+  },
   middleware: getDefaultMiddleware =>
     getDefaultMiddleware({
       serializableCheck: {
