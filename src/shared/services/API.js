@@ -37,7 +37,7 @@ export const logout = async () => {
 };
 
 export const getCurrent = async token => {
-  // addToken(token);
+  addToken(token);
   try {
     const { data } = await instance.get('users/current');
     return data;
@@ -49,8 +49,9 @@ export const getCurrent = async token => {
 
 // CONTACTS
 
-export const fetch = async () => {
-  // setToken();
+export const fetch = async token => {
+  addToken(token);
+
   const { data } = await instance.get('/contacts');
   return data;
 };

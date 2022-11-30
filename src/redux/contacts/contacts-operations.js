@@ -2,11 +2,18 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 
 import { fetch, addNewContact, removeNewContact } from 'shared/services/API';
 
+// const setToken = () => {
+//   const allLocalStorage = JSON.parse(localStorage.getItem('persist:root'));
+//   const token = JSON.parse(allLocalStorage.auth).token;
+
+//   instance.defaults.headers.common.Authorization = `Bearer ${token}`;
+// };
+
 export const fetchContacts = createAsyncThunk(
   'contacts/fetchAll',
-  async (_, { rejectWithValue }) => {
+  async (token, { rejectWithValue }) => {
     try {
-      const data = await fetch();
+      const data = await fetch(token);
       return data;
     } catch (error) {
       return rejectWithValue(error);

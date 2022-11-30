@@ -42,13 +42,16 @@ export const getCurrentUser = createAsyncThunk(
     try {
       const { auth } = getState();
       const { token } = auth;
-      if (!Boolean(token.length)) {
+
+      if (!token.length) {
         // или throw Error;
-        return rejectWithValue('no Token');
+        // await API.logout();
+        // return;
+        // console.log('выполняется иф в геткарент');
+        return false;
       }
 
       const user = await API.getCurrent(token);
-
       return user;
     } catch (error) {
       return rejectWithValue(error.message);

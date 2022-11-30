@@ -1,7 +1,6 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import { Notify } from 'notiflix';
-// import PropTypes from 'prop-types';
 
 import Phonebook from 'components/Phonebook';
 import Section from 'components/Section';
@@ -22,10 +21,11 @@ import { getContacts } from 'redux/contacts/contacts-selectors';
 
 function ContactsPage() {
   const dispatch = useDispatch();
+  const token = useSelector(store => store.auth.token);
 
   useEffect(() => {
-    dispatch(fetchContacts());
-  }, [dispatch]);
+    dispatch(fetchContacts(token));
+  }, [dispatch, token]);
 
   const filter = useSelector(getFilter);
   const { items, isLoading, error } = useSelector(getContacts);
@@ -49,7 +49,6 @@ function ContactsPage() {
 
     return items;
   };
-  // console.log(items);
 
   const addFilter = e => {
     dispatch(addFilterContacts(e.target.value));

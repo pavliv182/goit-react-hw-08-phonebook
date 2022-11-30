@@ -24,16 +24,6 @@ const persistConfig = {
   // в whiteList было значение 'token'
 };
 
-// const RootReducer = combineReducers({
-//   contacts: contactsReducer,
-//   filter: filterReducer,
-//   auth: authReducer,
-// });
-
-// const RootReducer = combineReducers({
-//   authReducer,
-// });
-
 const persistedReducer = persistReducer(persistConfig, authReducer);
 
 export const store = configureStore({
@@ -51,3 +41,13 @@ export const store = configureStore({
 });
 
 export const persistor = persistStore(store);
+
+// const RootReducer = combineReducers({
+//   contacts: contactsReducer,
+//   filter: filterReducer,
+//   auth: authReducer,
+// });
+
+// const RootReducer = combineReducers({
+//   authReducer,
+// });
